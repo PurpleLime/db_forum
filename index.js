@@ -1,11 +1,11 @@
 const express = require('express');
 const cluster = require('express-cluster');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 
 cluster(function(worker) {
 	const app = express();
 
-	app.use(morgan('dev'));
+	// app.use(morgan('dev'));
 
 	app.use((req, res, next) => {
 		const startAt = Date.now();

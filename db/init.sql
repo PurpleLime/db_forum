@@ -14,7 +14,12 @@ CREATE TABLE users (
     about TEXT
 );
 
-CREATE INDEX users__nickname ON users(id);
+CREATE INDEX users__id ON users(id);
+--2938
+--CREATE INDEX users__nickname ON users(nickname);
+--3036
+--CREATE INDEX users__email ON users(email);
+
 
 CREATE TABLE forums (
     id SERIAL PRIMARY KEY,
@@ -47,6 +52,13 @@ CREATE TABLE threads (
 );
 
 CREATE INDEX threads__forum_created ON threads(forum_slug, created);
+--CREATE INDEX threads__forum ON threads(forum);
+--CREATE INDEX threads__forum_username ON threads(forum, username);
+--CREATE INDEX threads__title_username_forum_message ON threads(title, username, forum, mesage);
+--2967
+--CREATE INDEX threads__slug ON threads(slug);
+--CREATE INDEX threads__id_slug ON threads(id, slug);
+
 
 CREATE OR REPLACE FUNCTION insertThread()
 RETURNS TRIGGER AS
@@ -103,6 +115,11 @@ FOR EACH ROW
 EXECUTE PROCEDURE insertPost();
 
 CREATE INDEX posts__thread_id_created ON posts(thread_id, id, created);
+--CREATE INDEX posts__id_thread ON posts(id, thread_id);
+--CREATE INDEX posts__thread ON posts(thread_id);
+--CREATE INDEX posts__created ON posts(created);
+--CREATE INDEX posts__path ON posts(path);
+--CREATE INDEX posts__username ON posts(username);
 
 CREATE TABLE votes (
     id SERIAL PRIMARY KEY,
@@ -152,3 +169,10 @@ AFTER UPDATE
 ON votes
 FOR EACH ROW
 EXECUTE PROCEDURE updateVote();
+
+--CREATE INDEX votes__thread_username ON votes(thread_id, username);
+--?
+--CREATE INDEX votes__username ON votes(username);
+----?
+--CREATE INDEX votes__thread ON votes(thread_id);
+
