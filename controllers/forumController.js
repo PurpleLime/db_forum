@@ -2,7 +2,7 @@ const model = require('../models/forumsModel');
 const errors = require('../errors/errors');
 
 class forumController {
-	
+
 	static async createForum(req, res) {
 		try {
 			const forum = await model.createForum(req.body);

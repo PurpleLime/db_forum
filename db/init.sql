@@ -14,9 +14,9 @@ CREATE TABLE users (
     about TEXT
 );
 
-CREATE INDEX users__id ON users(id);
+--CREATE INDEX users__id ON users(id);
 --2938
---CREATE INDEX users__nickname ON users(nickname);
+CREATE INDEX users__nickname ON users(nickname);
 --3036
 --CREATE INDEX users__email ON users(email);
 
@@ -51,12 +51,13 @@ CREATE TABLE threads (
     votes INTEGER DEFAULT 0
 );
 
+--мб разделить на два?
 CREATE INDEX threads__forum_created ON threads(forum_slug, created);
 --CREATE INDEX threads__forum ON threads(forum);
 --CREATE INDEX threads__forum_username ON threads(forum, username);
 --CREATE INDEX threads__title_username_forum_message ON threads(title, username, forum, mesage);
 --2967
---CREATE INDEX threads__slug ON threads(slug);
+CREATE INDEX threads__slug ON threads(slug);
 --CREATE INDEX threads__id_slug ON threads(id, slug);
 
 
@@ -114,6 +115,7 @@ ON posts
 FOR EACH ROW
 EXECUTE PROCEDURE insertPost();
 
+--мб убрать id?
 CREATE INDEX posts__thread_id_created ON posts(thread_id, id, created);
 --CREATE INDEX posts__id_thread ON posts(id, thread_id);
 --CREATE INDEX posts__thread ON posts(thread_id);
