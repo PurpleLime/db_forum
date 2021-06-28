@@ -16,7 +16,7 @@ CREATE TABLE users (
 
 --CREATE INDEX users__id ON users(id);
 --2938
-CREATE INDEX users__nickname ON users(nickname);
+--CREATE INDEX users__nickname ON users(nickname);
 --3036
 --CREATE INDEX users__email ON users(email);
 
@@ -57,7 +57,7 @@ CREATE INDEX threads__forum_created ON threads(forum_slug, created);
 --CREATE INDEX threads__forum_username ON threads(forum, username);
 --CREATE INDEX threads__title_username_forum_message ON threads(title, username, forum, mesage);
 --2967
-CREATE INDEX threads__slug ON threads(slug);
+--CREATE INDEX threads__slug ON threads(slug);
 --CREATE INDEX threads__id_slug ON threads(id, slug);
 
 
